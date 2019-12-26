@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class StringFn 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		String str=sc.nextLine();
+		String rev=reverseStr(str);
+		int []count=countWordAndVowel(str);
+		System.out.println("Original String: "+str);
+		System.out.println("Reversed String: "+rev);
+		System.out.println("Word Count: "+count[1]+" Vowel Count: "+count[0]);
+		sc.close();
+	}
+	
+	//Method to Reverse the user input string
+	public static String reverseStr(String s)
+	{
+		char ch=' ';
+		String rev="";
+		for(int i=0;i<s.length();i++)
+		{
+			ch=s.charAt(i);
+			rev=ch+rev;
+		}
+		return rev;
+	}
+	
+	//Method for counting number of words and vowels
+	public static int[] countWordAndVowel(String s)
+	{
+		int [] counts=new int[]{0,0};
+		s=s+" ";
+		char ch=' ';
+		for(int i=0;i<s.length();i++)
+		{
+			ch=s.charAt(i);
+			if(Character.isWhitespace(ch))   //Word Count
+			{
+				counts[1]++;
+			}
+			ch=Character.toLowerCase(ch);
+			if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')  //Vowel Count
+			{
+				counts[0]++;
+			}
+		}
+		return counts;
+	}
+}
